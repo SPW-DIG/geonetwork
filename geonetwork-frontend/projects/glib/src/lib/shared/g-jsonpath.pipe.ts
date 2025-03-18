@@ -1,6 +1,5 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { JSONPathJS } from 'jsonpath-js';
-//import { JSONPath } from 'jsonpath-plus';
 
 @Pipe({
   name: 'gJsonpath',
@@ -13,13 +12,8 @@ export class GJsonpathPipe implements PipeTransform {
       return;
     }
 
-    //return JSONPath({ path, json });
-    console.log('JSON: ', json);
-    console.log('JSON PATH: ', path);
-
     const query = new JSONPathJS(path);
     const result = query.find(json);
-    console.log('Result: ', result);
     return result;
   }
 }
