@@ -39,9 +39,15 @@ public class NioPathAwareCatalogResolver extends CatalogResolver {
         // any catalogFiles that are paths and not files must be handled by this child.
         for (Object catalogFile : catalogFiles) {
             final String path = catalogFile.toString();
-            if (!new File(path).exists() && Files.exists(IO.toPath(path))) {
+            Path resolvedPath;
+            try {
+                resolvedPath = IO.toPath(new URI(path));
+            } catch (URISyntaxException | IllegalArgumentException e) {
+                resolvedPath = IO.toPath(path);
+            }
+            if (!new File(path).exists() && Files.exists(resolvedPath)) {
                 try {
-                    final String xml = Files.readString(IO.toPath(path), Constants.CHARSET);
+                    final String xml = Files.readString(resolvedPath, Constants.CHARSET);
                     Xml.loadString(xml, false);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
