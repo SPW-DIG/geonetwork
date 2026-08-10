@@ -21,7 +21,7 @@ public class SimpleValidators {
         if (isBlank(catalogId)) {
             throw new Exception("no catalogId!");
         }
-        if (!catalogId.matches("^[a-zA-Z0-9_-]+$")) {
+        if (!catalogId.matches("^[.a-zA-Z0-9_-]+$")) {
             throw new Exception(MessageFormat.format("catalogId ''{0}'' is invalid!", catalogId));
         }
     }
