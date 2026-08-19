@@ -34,9 +34,6 @@ public class OgcApiLinkConfiguration {
         if (!ogcApiRecordsBaseUrl.endsWith("/")) {
             ogcApiRecordsBaseUrl += "/";
         }
-        // Regex to replace '//' or '///' with '/'. Using Negative LookBehind (?<!...) to prevent replacing https://
-        // with https:/
-        ogcApiRecordsBaseUrl = ogcApiRecordsBaseUrl.replaceAll("(?<!:)//+", "/");
         this.ogcApiRecordsBaseUrl = ogcApiRecordsBaseUrl;
     }
 
@@ -52,7 +49,6 @@ public class OgcApiLinkConfiguration {
         if (!gnBaseUrl.endsWith("/")) {
             gnBaseUrl += "/";
         }
-        gnBaseUrl = gnBaseUrl.replace("//", "/");
 
         this.gnBaseUrl = gnBaseUrl;
     }
