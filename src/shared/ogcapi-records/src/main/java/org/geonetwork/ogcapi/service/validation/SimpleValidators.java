@@ -12,7 +12,7 @@ import java.text.MessageFormat;
 public class SimpleValidators {
 
     /**
-     * validates a catalogId. This must only have letters, numbers, or "-" or "_".
+     * validates a catalogId. This must only have letters, numbers, or "-" or "_" or '.'.
      *
      * @param catalogId from user
      * @throws Exception if the catalogId is bad
@@ -21,7 +21,7 @@ public class SimpleValidators {
         if (isBlank(catalogId)) {
             throw new Exception("no catalogId!");
         }
-        if (!catalogId.matches("^[a-zA-Z0-9_-]+$")) {
+        if (!catalogId.matches("^[.a-zA-Z0-9_-]+$")) {
             throw new Exception(MessageFormat.format("catalogId ''{0}'' is invalid!", catalogId));
         }
     }
